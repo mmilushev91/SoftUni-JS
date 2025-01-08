@@ -1,0 +1,8 @@
+function solve(inches) {
+  const inch = 2.54;
+  
+  let cm = inches * inch;
+  
+  console.log(cm);
+  
+}
