@@ -1,0 +1,46 @@
+function solve(count, type, day) {
+  
+  ticketInfo = {
+    
+    Friday: {
+      Students: 8.45,
+      Business: 10.90,
+      Regular: 15,
+    },
+    
+    Saturday: {
+      Students: 9.80,
+      Business: 15.60,
+      Regular: 20,
+    },
+  
+  Sunday: {
+      Students: 10.46,
+      Business: 16,
+      Regular: 22.50,
+    },
+  }
+
+let ticketPrice = ticketInfo[day][type];
+  
+  switch (type) {
+    case 'Students':
+      
+      if (count >= 30) ticketPrice -= ticketPrice * 0.15;
+      break;
+  
+  case "Business":
+      if (count >= 100) count-= 10;
+      break;
+    
+    default:
+      if (count >= 10 && count <= 20) ticketPrice -= ticketPrice * 0.05;
+      break;
+  }
+  
+  const totalPrice = ticketPrice * count;
+  
+  console.log(`Total price: ${totalPrice.toFixed(2)}`)
+  
+  
+}
