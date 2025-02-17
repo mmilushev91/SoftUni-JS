@@ -1,17 +1,27 @@
-function solve(numbers, line) {
-  const [bomb, power] = line;
-  let start, end, index;
-
-  while (numbers.includes(bomb)) {
-
-    index = numbers.indexOf(bomb);
-     
-    start = index - power >= 0 ? index - power : 0;
-    end = index + power <= numbers.length ? index + power : numbers.length;
-    numbers.splice(start, end)
+function solve(numbers, bomb) {
+  const numbersLength = numbers.length
+  const [num, power] = bomb;
+  const output = [];
+  
+  idx = 0
+  while (idx < numbersLength) {
+    
+    if (numbers[idx] !== num) {
+      output.push(numbers[idx]);
+      idx++;
+      
+    }
+    
+    else {
+      for (let i = 0; i < power; i++) {
+        output.pop();
+      }
+      
+      idx += power + 1;
+    }
   }
   
-  let sum = 0
-  numbers.forEach((a) => sum += a)
+  let sum = 0;
+  output.forEach((a) => sum += a)
   console.log(sum)
 }
